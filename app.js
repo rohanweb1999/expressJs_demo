@@ -7,14 +7,13 @@ mongoose.connect(url, { useNewUrlParser: true })
 const con = mongoose.connection
 
 con.on('open', () => {
-    console.log('mongoose Connected');
-    app.listen(3062, () => {
+    app.listen(4000, () => {
         console.log("Server Listen");
     })
 })
-app.use(express.json())
-const employeeRouter = require('./router/apiRouter')
-app.use('/allemployee', employeeRouter)
+app.use(express.json())// define middleware
+// const employeeRouter = require('./router/apiRouter')
+app.use(require('./router/apiRouter'));
 // {
 //     "firstName":"rohan",
 //     "lastName":"gajjart",
